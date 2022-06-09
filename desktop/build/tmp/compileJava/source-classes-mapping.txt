@@ -1,0 +1,2 @@
+com/nopalsoft/flappy/desktop/DesktopLauncher.java
+ com.nopalsoft.flappy.desktop.DesktopLauncher
