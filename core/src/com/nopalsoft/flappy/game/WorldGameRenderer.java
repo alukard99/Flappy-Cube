@@ -44,7 +44,7 @@ public class WorldGameRenderer {
         spriteBatch.end();
 
         //Descomentar para activar modo debug
-        renderBox.render(oWorld.oWorldBox, oCam.combined);
+        //renderBox.render(oWorld.oWorldBox, oCam.combined);
     }
 
     private void drawBackground(float delta) {

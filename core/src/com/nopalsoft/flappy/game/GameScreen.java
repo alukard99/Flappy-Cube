@@ -1,6 +1,7 @@
 package com.nopalsoft.flappy.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -62,7 +63,7 @@ public class GameScreen extends Screens {
     }
 
     private void updateReady() {
-        if (Gdx.input.justTouched()) {
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
             getReady.addAction(Actions.sequence(Actions.fadeOut(.3f),
                     Actions.run(new Runnable() {
                         @Override
@@ -76,6 +77,12 @@ public class GameScreen extends Screens {
     }
 
     private void updateRunning(float delta) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A)){ //Si se pulsa la A (Izquierda)
+            oWorld.update(delta, true, 1);
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.D)){ //Si se pulsa la D
+            oWorld.update(delta, true, 2);
+        }
         if (Gdx.input.isTouched()){
             if (Gdx.input.getX() < Gdx.graphics.getWidth() / 2){ //Si se pulsa la mitad izquierda de la pantalla
                 oWorld.update(delta, true, 1);
@@ -96,7 +103,7 @@ public class GameScreen extends Screens {
     }
 
     private void updateGameOver() {
-        if (Gdx.input.justTouched()) {
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)) {
             gameOver.addAction(Actions.sequence(Actions.fadeOut(.3f),
                     Actions.run(new Runnable() {
                         @Override
